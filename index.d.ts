@@ -7,7 +7,7 @@ declare function harmonBinary(
   reqSelectors?: harmonBinary.Select[],
   resSelectors?: harmonBinary.Select[],
   htmlOnly?: boolean,
-  statusesToIgnore?: number[]
+  skipResponse?: (status: number) => boolean
 ): any;
 
 declare namespace harmonBinary {
