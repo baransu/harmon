@@ -16,3 +16,5 @@ declare namespace harmonBinary {
     func(node: any): any;
   }
 }
+
+export = harmonBinary;
