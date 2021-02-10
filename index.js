@@ -28,7 +28,8 @@ module.exports = function harmonBinary(reqSelectors, resSelectors, htmlOnly) {
     res.isHtml = function () {
       if (res._isHtml === undefined) {
         var contentType = res.getHeader("content-type") || "";
-        res._isHtml = contentType.includes("text/html") || res.statusCode < 500;
+        res._isHtml =
+          contentType.indexOf("text/html") === 0 || res.statusCode < 500;
       }
 
       return res._isHtml;
