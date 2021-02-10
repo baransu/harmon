@@ -1,9 +1,15 @@
 var trumpet = require("trumpet");
 var zlib = require("zlib");
 
-module.exports = function harmonBinary(reqSelectors, resSelectors, htmlOnly) {
+module.exports = function harmonBinary(
+  reqSelectors,
+  resSelectors,
+  htmlOnly,
+  statusesToIgnore
+) {
   var _reqSelectors = reqSelectors || [];
   var _resSelectors = resSelectors || [];
+
   var _htmlOnly = typeof htmlOnly == "undefined" ? false : htmlOnly;
 
   function prepareRequestSelectors(req, res) {
@@ -29,7 +35,9 @@ module.exports = function harmonBinary(reqSelectors, resSelectors, htmlOnly) {
       if (res._isHtml === undefined) {
         var contentType = res.getHeader("content-type") || "";
         res._isHtml =
-          contentType.indexOf("text/html") === 0 || res.statusCode < 500;
+          contentType.indexOf("text/html") === 0 && statusesToIgnore
+            ? statusesToIgnore.indexOf(res.statusCode) === -1
+            : true;
       }
 
       return res._isHtml;
