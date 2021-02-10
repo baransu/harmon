@@ -3,7 +3,7 @@
 // Definitions by: Eric Danowski <https://github.com/micronaut>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-export declare function harmonBinary(
+declare function harmonBinary(
   reqSelectors?: harmonBinary.Select[],
   resSelectors?: harmonBinary.Select[],
   htmlOnly?: boolean,
